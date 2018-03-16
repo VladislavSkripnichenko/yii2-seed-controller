@@ -95,7 +95,7 @@ class ClassFinder
 
         foreach ($Regex as $regex) {
             if (!count($regex) || (!isset($regex[0])) || (isset($regex[0]) && (!is_file($regex[0]) || is_dir($regex[0])))) {
-
+                continue;
             }
             $files[] = $regex[0];
         }

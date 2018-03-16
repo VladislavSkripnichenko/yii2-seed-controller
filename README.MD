@@ -58,9 +58,9 @@ Seed class must be extended from `sonrac\seeds\Seed` or implemented from `sonrac
 
 Seed must be has `run` method for seeds running.
 
-Also, you may declare protected method `getData` which returned seed array (or return data from require another php-file) and set public property $tableName or $modelClass.
+Also, you may declare protected method `getData` which returned seed array (or return data from require another php-file) and set public property $_tableName or $modelClass.
 
-Which define $tableName seed running in batch insert mode
+Which define $_tableName seed running in batch insert mode
 
 Which define $modelClass and class name extends from \yii\db\ActiveRecord all data saving with model
 
@@ -68,7 +68,7 @@ Which define $modelClass and class name extends from \yii\db\ActiveRecord all da
 
 | option | type | description |
 | ------ | ---- | ----------- |
-| tableName | string | Seed table name |
+| _tableName | string | Seed table name |
 | modelClass | string | Seed model class |
 | controller | \yii\console\Controller|null | Current running controller |
 | runModelValidation | bool | If you are using saving with model, you can disable/enable model validation during save |

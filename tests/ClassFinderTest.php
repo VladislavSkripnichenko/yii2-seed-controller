@@ -31,9 +31,9 @@ class ClassFinderTest extends TestCase
         ], ClassFinder::getInstance(yii::$app->vendorPath)->getNameSpacePath('sonrac\seeds'));
 
         $this->assertEquals([
-            '/projects/composer/yii2/seeds/tests/app/Boot.php',
-            '/projects/composer/yii2/seeds/tests/app/TableMigrations.php',
-            '/projects/composer/yii2/seeds/tests/app/TestModel.php',
+            __DIR__.'/app/Boot.php',
+            __DIR__.'/app/TableMigrations.php',
+            __DIR__.'/app/TestModel.php',
         ], ClassFinder::recFindByExt(__DIR__ . '/app/', ['php'], false));
 
         $this->assertCount(12, ClassFinder::recFindByExt(__DIR__, ['php']));

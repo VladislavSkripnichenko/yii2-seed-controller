@@ -17,7 +17,7 @@ use yii\helpers\Console;
  * Class Seed
  * Base seed class
  *
- * @property null|string               $tableName     Table name. Define if you define data in getData() method and
+ * @property null|string               $_tableName     Table name. Define if you define data in getData() method and
  *           inserted into table from array
  * @property null|\yii\db\ActiveRecord $modelClass    Table      name. Define if you define data in getData() method and
  *           inserted into table from array
@@ -127,7 +127,7 @@ abstract class Seed extends Object implements ISeed
     }
 
     /**
-     * Get data for seeds if tableName or modelClass property is instead
+     * Get data for seeds if _tableName or modelClass property is instead
      *
      * @return array
      *

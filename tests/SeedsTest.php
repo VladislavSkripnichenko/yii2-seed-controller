@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 use sonrac\seeds\tests\testTable\SeedError;
 use sonrac\seeds\tests\testTable\SeedFirst;
 use sonrac\seeds\tests\testTable\SeedModel;
+use yii\base\InvalidConfigException;
+use yii\db\ActiveQuery;
 use yii\db\IntegrityException;
 use yii\db\Query;
 
@@ -51,5 +53,21 @@ class SeedsTest extends TestCase
         $this->assertTrue($seed->run());
 
         $this->assertCount(4, (new Query())->from('test')->all());
+    }
+
+    public function testInitError() {
+        $seed = new SeedFirst();
+
+        $seed->modelClass = ActiveQuery::class;
+
+        $this->expectException(InvalidConfigException::class);
+
+        $seed->init();
+    }
+    public function testData() {
+        $seed = new SeedFirst();
+
+        $this->assertCount(2, $seed->getData());
+        $this->assertEquals(null, $seed->getController());
     }
 }

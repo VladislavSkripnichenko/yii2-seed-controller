@@ -23,6 +23,11 @@ use yii;
  */
 class SeedControllerTest extends TestCase
 {
+    /**
+     * Test one seed
+     *
+     * @throws \yii\db\Exception
+     */
     public function testOneSeed()
     {
         $controller = new SeedsController('seeds', Yii::$app->module->id);
@@ -42,6 +47,11 @@ class SeedControllerTest extends TestCase
         $this->assertCount(2, (new yii\db\Query())->from('user')->all());
     }
 
+    /**
+     * Test namespace
+     *
+     * @throws \yii\db\Exception
+     */
     public function testNameSpace()
     {
         $controller = new SeedsController('seeds', Yii::$app->module->id);
@@ -52,6 +62,11 @@ class SeedControllerTest extends TestCase
         $this->_assertions();
     }
 
+    /**
+     * Test run all
+     *
+     * @throws \yii\db\Exception
+     */
     public function testRunAllNamespacesConfig()
     {
         $controller = new SeedsController('seeds', Yii::$app->module->id, [

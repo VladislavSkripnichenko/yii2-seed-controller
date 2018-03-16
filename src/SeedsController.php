@@ -29,6 +29,13 @@ class SeedsController extends Controller
      */
     public $seedsNamespaces = [];
 
+    /**
+     * Run all seeds
+     *
+     * @throws \yii\db\Exception
+     *
+     * @author Donii Sergii <doniyas@gmail.com>
+     */
     public function actionRunAll()
     {
         $result = true;
@@ -49,6 +56,16 @@ class SeedsController extends Controller
         }
     }
 
+    /**
+     * Run seed commands group
+     *
+     * @param $namespace
+     *
+     * @return bool|null
+     * @throws \yii\db\Exception
+     *
+     * @author Donii Sergii <doniysa@gmail.com>
+     */
     public function actionRunGroup($namespace)
     {
         if (class_exists($namespace)) {
@@ -59,7 +76,7 @@ class SeedsController extends Controller
         $path = $namespaceInfo['path'];
 
         if (!is_dir($path)) {
-            throw new InvalidParamException('Namespace not found');
+            throw new \InvalidArgumentException('Namespace not found');
         }
 
         $files = $this->filterSeeds(ClassFinder::recFindByExt($path, ['php'], false), $namespace);
@@ -85,7 +102,17 @@ class SeedsController extends Controller
         return $result;
     }
 
-    public function actionSeed($className = null, $tableName)
+    /**
+     * Run seed action
+     *
+     * @param null|string $className Classname
+     * @param null|string $tableName Migration tablename
+     *
+     * @throws \yii\db\Exception
+     *
+     * @author Donii Sergii <doniysa@gmail.com>
+     */
+    public function actionSeed($className = null, $tableName = null)
     {
         /** @var Seed $class */
         $class = new $className;
@@ -120,7 +147,7 @@ class SeedsController extends Controller
                 continue;
             }
 
-            if (in_array(ISeed::class, class_implements($className))) {
+            if (in_array(ISeed::class, class_implements($className), false)) {
                 $seedFiles[] = $className;
             }
 
