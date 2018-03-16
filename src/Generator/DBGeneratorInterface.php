@@ -14,7 +14,7 @@ use yii\db\Query;
  * Interface DBGeneratorInterface.
  * Generate seed from DB data interface.
  *
- * @package sonrac\seeds\Generator
+ * @package sonrac\seeds\GeneratorController
  */
 interface DBGeneratorInterface extends GeneratorInterface
 {

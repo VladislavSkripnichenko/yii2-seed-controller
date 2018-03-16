@@ -12,7 +12,7 @@ namespace sonrac\seeds\Generator;
  * Interface GeneratorInterface.
  * Data generator interface.
  *
- * @package sonrac\seeds\Generator
+ * @package sonrac\seeds\GeneratorController
  */
 interface GeneratorInterface
 {

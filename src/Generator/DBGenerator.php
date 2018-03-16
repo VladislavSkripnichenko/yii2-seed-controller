@@ -11,9 +11,9 @@ use yii\db\Query;
 
 /**
  * Class DBGenerator.
- * DB Generator.
+ * DB GeneratorController.
  *
- * @package sonrac\seeds\Generator
+ * @package sonrac\seeds\GeneratorController
  */
 class DBGenerator implements DBGeneratorInterface
 {
@@ -70,6 +70,22 @@ class DBGenerator implements DBGeneratorInterface
         $data = $query->all();
 
         return $data ? : [];
+    }
+
+    /**
+     * @return \yii\db\Query
+     */
+    public function getQueryBuilder()
+    {
+        return $this->_queryBuilder;
+    }
+
+    /**
+     * @param \yii\db\Query $queryBuilder
+     */
+    public function setQueryBuilder(Query $queryBuilder)
+    {
+        $this->_queryBuilder = $queryBuilder;
     }
 
 }

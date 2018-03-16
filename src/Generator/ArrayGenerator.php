@@ -25,22 +25,20 @@ class ArrayGenerator implements GeneratorInterface
      *
      * @var string
      */
-    protected $tablename;
+    protected $_tableName;
 
     /**
      * ArrayGenerator constructor.
      *
      * @param string $filename
+     * @param string $tablename
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct($filename, $tablename)
+    public function __construct($filename = null, $tablename = null)
     {
-        if (!is_string($filename) && !is_file($filename)) {
-            throw new \InvalidArgumentException('Incorrect format');
-        }
-
         $this->_fileName = $filename;
+        $this->_tableName = $tablename;
     }
 
     /**
@@ -49,6 +47,38 @@ class ArrayGenerator implements GeneratorInterface
     public function getData()
     {
         return require $this->_fileName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFileName()
+    {
+        return $this->_fileName;
+    }
+
+    /**
+     * @param string $fileName
+     */
+    public function setFileName($fileName)
+    {
+        $this->_fileName = $fileName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTableName()
+    {
+        return $this->_tableName;
+    }
+
+    /**
+     * @param string $tableName
+     */
+    public function setTableName($tableName)
+    {
+        $this->_tableName = $tableName;
     }
 
 
